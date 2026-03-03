@@ -1,6 +1,6 @@
 import { Table } from "@mantine/core";
 import { PurchaseOrder } from "@/types/Purchases";
-import { PurchaseRow } from "@/components/PurchaseRow";
+import { PurchaseRow } from "@/components/Purchases/PurchaseRow";
 import { ActionType } from "@/types/Purchases";
 
 interface Props {

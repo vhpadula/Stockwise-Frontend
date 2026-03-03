@@ -1,24 +1,24 @@
 import { PrimaryNavLink } from "./PrimaryNavLink";
 import SectionCard from "./SectionCard";
-import ProductsTable from "./ProductsTable";
-import ProductForm from "./ProductForm";
-import StocksTable from "./StocksTable";
-import ProductDetailStocksTable from "./ProductDetailStocksTable";
-import ProductFinancials from "./ProductFinancials";
-import StockMovementsDrawer from "./StockMovementsDrawer";
-import PurchasesTable from "./PurchasesTable";
-import PurchaseActionModal from "./PurchaseActionModal";
-import PurchaseDetailsDrawer from "./PurchaseDetailsDrawer";
-import PurchaseOrderForm from "./PurchaseOrderForm";
-import SalesActionModal from "./SalesActionModal";
-import SalesDetailsDrawer from "./SalesDetailDrawer";
-import SalesTable from "./SalesTable";
-import SalesOrderForm from "./SalesOrderForm";
-import { FinancesFilters } from "./FinancesFilters";
-import { FinancesKpis } from "./FinancesKpis";
-import { FinancesTimelineChart } from "./FinancesTimelineChart";
-import { ProductFinancialTable } from "./ProductFinancialTable";
-import { TopProductsTable } from "./TopProductsTable";
+import ProductsTable from "./Products/ProductsTable";
+import ProductForm from "./Products/ProductForm";
+import StocksTable from "./Stocks/StocksTable";
+import ProductDetailStocksTable from "./Products/ProductDetailStocksTable";
+import ProductFinancials from "./Products/ProductFinancials";
+import StockMovementsDrawer from "./Stocks/StockMovementsDrawer";
+import PurchasesTable from "./Purchases/PurchasesTable";
+import PurchaseActionModal from "./Purchases/PurchaseActionModal";
+import PurchaseDetailsDrawer from "./Purchases/PurchaseDetailsDrawer";
+import PurchaseOrderForm from "./Purchases/PurchaseOrderForm";
+import SalesActionModal from "./Sales/SalesActionModal";
+import SalesDetailsDrawer from "./Sales/SalesDetailDrawer";
+import SalesTable from "./Sales/SalesTable";
+import SalesOrderForm from "./Sales/SalesOrderForm";
+import { FinancesFilters } from "./Finances/FinancesFilters";
+import { FinancesKpis } from "./Finances/FinancesKpis";
+import { FinancesTimelineChart } from "./Finances/FinancesTimelineChart";
+import { ProductFinancialTable } from "./Finances/ProductFinancialTable";
+import { TopProductsTable } from "./Finances/TopProductsTable";
 export {
   PrimaryNavLink,
   SectionCard,

@@ -15,7 +15,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { ProductsService } from "@/services/Products";
-import ProductsTable from "@/components/ProductsTable";
+import ProductsTable from "@/components/Products/ProductsTable";
 import { MagnifyingGlassIcon, PlusIcon } from "@heroicons/react/16/solid";
 
 export default function ProductsPage() {
