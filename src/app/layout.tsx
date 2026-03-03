@@ -4,6 +4,7 @@ import "./globals.css";
 import { QueryProvider } from "@/providers/QueryProvider";
 import { createTheme, MantineProvider } from "@mantine/core";
 import "@mantine/core/styles.css";
+import "@mantine/dates/styles.css";
 import { AuthProvider } from "@/providers/AuthProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
