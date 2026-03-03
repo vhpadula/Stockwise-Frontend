@@ -5,6 +5,7 @@ import ProductForm from "./ProductForm";
 import StocksTable from "./StocksTable";
 import ProductDetailStocksTable from "./ProductDetailStocksTable";
 import ProductFinancials from "./ProductFinancials";
+import StockMovementsDrawer from "./StockMovementsDrawer";
 export {
   PrimaryNavLink,
   SectionCard,
@@ -13,4 +14,5 @@ export {
   StocksTable,
   ProductDetailStocksTable,
   ProductFinancials,
+  StockMovementsDrawer,
 };
