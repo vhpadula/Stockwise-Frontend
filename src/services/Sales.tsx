@@ -1,7 +1,14 @@
+// services/Sales.ts
 import api from "@/lib/api";
-import { CreateSalesOrderDTO, UpdateSalesOrderDTO } from "@/types/Sales";
+import {
+  CreateSalesOrderDTO,
+  UpdateSalesOrderDTO,
+  SalesOrderItem,
+  SalesOrderItemFilters,
+} from "@/types/Sales";
 
 export const SalesService = {
+  // Orders
   listOrders: async () => {
     const { data } = await api.get("/api/sales/orders/");
     return data;
@@ -32,5 +39,40 @@ export const SalesService = {
 
   cancelOrder: async (id: string) => {
     await api.post(`/api/sales/orders/${id}/cancel/`);
+  },
+
+  // Items
+  listItems: async (filters?: SalesOrderItemFilters) => {
+    const { data } = await api.get<SalesOrderItem[]>("/api/sales/items/", {
+      params: filters,
+    });
+    return data;
+  },
+
+  getItem: async (id: string) => {
+    const { data } = await api.get<SalesOrderItem>(`/api/sales/items/${id}/`);
+    return data;
+  },
+
+  listItemsByOrder: async (salesOrderId: string) => {
+    const { data } = await api.get<SalesOrderItem[]>(
+      `/api/sales/items/by-order/${salesOrderId}/`,
+    );
+    return data;
+  },
+
+  updateItem: async (
+    id: string,
+    payload: Partial<Pick<SalesOrderItem, "quantity" | "unit_price">>,
+  ) => {
+    const { data } = await api.patch<SalesOrderItem>(
+      `/api/sales/items/${id}/`,
+      payload,
+    );
+    return data;
+  },
+
+  deleteItem: async (id: string) => {
+    await api.delete(`/api/sales/items/${id}/`);
   },
 };

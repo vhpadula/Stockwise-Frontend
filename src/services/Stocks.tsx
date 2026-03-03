@@ -32,7 +32,7 @@ export const StocksService = {
 
   // GET stock movements
   async getMovements(params?: {
-    product?: string;
+    stock__product?: string;
     stock?: string;
     sales_order_item?: string;
     start_date?: string;

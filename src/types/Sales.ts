@@ -64,3 +64,8 @@ export interface UpdateSalesOrderDTO {
   order_date: string;
   items: CreateSalesOrderItemDTO[];
 }
+
+export interface SalesOrderItemFilters {
+  sales_order?: string;
+  product?: string;
+}
