@@ -10,6 +10,10 @@ import PurchasesTable from "./PurchasesTable";
 import PurchaseActionModal from "./PurchaseActionModal";
 import PurchaseDetailsDrawer from "./PurchaseDetailsDrawer";
 import PurchaseOrderForm from "./PurchaseOrderForm";
+import SalesActionModal from "./SalesActionModal";
+import SalesDetailsDrawer from "./SalesDetailDrawer";
+import SalesTable from "./SalesTable";
+import SalesOrderForm from "./SalesOrderForm";
 export {
   PrimaryNavLink,
   SectionCard,
@@ -23,4 +27,8 @@ export {
   PurchaseActionModal,
   PurchaseDetailsDrawer,
   PurchaseOrderForm,
+  SalesActionModal,
+  SalesDetailsDrawer,
+  SalesTable,
+  SalesOrderForm,
 };

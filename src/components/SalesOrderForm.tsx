@@ -19,26 +19,19 @@ import { PlusIcon, TrashIcon } from "@heroicons/react/16/solid";
 
 import { ProductsService } from "@/services/Products";
 import { Product } from "@/types/Products";
-import {
-  CreatePurchaseOrderDTO,
-  CreatePurchaseOrderItemDTO,
-} from "@/types/Purchases";
+import { CreateSalesOrderDTO, CreateSalesOrderItemDTO } from "@/types/Sales";
 
-interface PurchaseOrderFormProps {
-  initialValues?: CreatePurchaseOrderDTO;
-  onSubmit: (values: CreatePurchaseOrderDTO) => void;
+interface Props {
+  initialValues?: CreateSalesOrderDTO;
+  onSubmit: (values: CreateSalesOrderDTO) => void;
   isLoading?: boolean;
 }
 
-export default function PurchaseOrderForm({
+export default function SalesOrderForm({
   initialValues,
   onSubmit,
   isLoading = false,
-}: PurchaseOrderFormProps) {
-  /* ============================================================
-     Fetch Products
-  ============================================================ */
-
+}: Props) {
   const { data: products = [], isLoading: loadingProducts } = useQuery<
     Product[]
   >({
@@ -51,36 +44,26 @@ export default function PurchaseOrderForm({
     label: `${product.name} (${product.sku})`,
   }));
 
-  /* ============================================================
-     Form Setup
-  ============================================================ */
-
-  const form = useForm<CreatePurchaseOrderDTO>({
+  const form = useForm<CreateSalesOrderDTO>({
     initialValues: initialValues ?? {
-      supplier_name: "",
+      customer_name: "",
       order_date: new Date().toISOString().split("T")[0],
       items: [],
     },
 
     validate: {
-      supplier_name: (value) =>
-        value.trim().length === 0 ? "Supplier name is required" : null,
+      customer_name: (value) =>
+        value.trim().length === 0 ? "Customer name is required" : null,
 
       order_date: (value) => (!value ? "Order date is required" : null),
     },
   });
 
-  /* ============================================================
-     Helpers
-  ============================================================ */
-
   const addItem = () => {
-    const newItem: CreatePurchaseOrderItemDTO = {
+    const newItem: CreateSalesOrderItemDTO = {
       product: "",
       quantity: 1,
-      unit_cost: 0,
-      lot_number: "",
-      expiration_date: "",
+      unit_price: 0,
     };
 
     form.insertListItem("items", newItem);
@@ -92,14 +75,10 @@ export default function PurchaseOrderForm({
 
   const calculateTotal = () => {
     return form.values.items.reduce(
-      (acc, item) => acc + item.quantity * item.unit_cost,
+      (acc, item) => acc + item.quantity * item.unit_price,
       0,
     );
   };
-
-  /* ============================================================
-     Render
-  ============================================================ */
 
   return (
     <form
@@ -114,17 +93,16 @@ export default function PurchaseOrderForm({
     >
       <Stack gap="lg">
         <Text size="lg" fw={600}>
-          Purchase Order Information
+          Sales Order Information
         </Text>
 
         <TextInput
-          label="Supplier Name"
-          placeholder="e.g. Acme Dairy"
+          label="Customer Name"
+          placeholder="e.g. John Doe"
           required
-          {...form.getInputProps("supplier_name")}
+          {...form.getInputProps("customer_name")}
         />
 
-        {/* ✅ Mantine v7 returns string | null */}
         <DateInput
           label="Order Date"
           required
@@ -170,31 +148,11 @@ export default function PurchaseOrderForm({
                 />
 
                 <NumberInput
-                  label="Unit Cost"
+                  label="Unit Price"
                   min={0}
                   decimalScale={2}
                   required
-                  {...form.getInputProps(`items.${index}.unit_cost`)}
-                />
-              </Group>
-
-              <Group grow>
-                <TextInput
-                  label="Lot Number"
-                  placeholder="Optional"
-                  {...form.getInputProps(`items.${index}.lot_number`)}
-                />
-
-                {/* ✅ No Date conversion needed */}
-                <DateInput
-                  label="Expiration Date"
-                  value={form.values.items[index].expiration_date || null}
-                  onChange={(value) =>
-                    form.setFieldValue(
-                      `items.${index}.expiration_date`,
-                      value ?? "",
-                    )
-                  }
+                  {...form.getInputProps(`items.${index}.unit_price`)}
                 />
               </Group>
 
@@ -203,7 +161,7 @@ export default function PurchaseOrderForm({
                   Line Total: $
                   {(
                     form.values.items[index].quantity *
-                    form.values.items[index].unit_cost
+                    form.values.items[index].unit_price
                   ).toFixed(2)}
                 </Text>
 
@@ -222,12 +180,12 @@ export default function PurchaseOrderForm({
         <Divider />
 
         <Group justify="flex-end">
-          <Text fw={600}>Total Amount: ${calculateTotal().toFixed(2)}</Text>
+          <Text fw={600}>Total Revenue: ${calculateTotal().toFixed(2)}</Text>
         </Group>
 
         <Group justify="flex-end">
           <Button type="submit" loading={isLoading}>
-            Save Purchase Order
+            Save Sales Order
           </Button>
         </Group>
       </Stack>
