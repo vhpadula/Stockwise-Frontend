@@ -124,7 +124,6 @@ export default function PurchaseOrderForm({
           {...form.getInputProps("supplier_name")}
         />
 
-        {/* ✅ Mantine v7 returns string | null */}
         <DateInput
           label="Order Date"
           required
@@ -185,7 +184,6 @@ export default function PurchaseOrderForm({
                   {...form.getInputProps(`items.${index}.lot_number`)}
                 />
 
-                {/* ✅ No Date conversion needed */}
                 <DateInput
                   label="Expiration Date"
                   value={form.values.items[index].expiration_date || null}

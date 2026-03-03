@@ -14,6 +14,11 @@ import SalesActionModal from "./SalesActionModal";
 import SalesDetailsDrawer from "./SalesDetailDrawer";
 import SalesTable from "./SalesTable";
 import SalesOrderForm from "./SalesOrderForm";
+import { FinancesFilters } from "./FinancesFilters";
+import { FinancesKpis } from "./FinancesKpis";
+import { FinancesTimelineChart } from "./FinancesTimelineChart";
+import { ProductFinancialTable } from "./ProductFinancialTable";
+import { TopProductsTable } from "./TopProductsTable";
 export {
   PrimaryNavLink,
   SectionCard,
@@ -31,4 +36,9 @@ export {
   SalesDetailsDrawer,
   SalesTable,
   SalesOrderForm,
+  FinancesFilters,
+  FinancesKpis,
+  FinancesTimelineChart,
+  ProductFinancialTable,
+  TopProductsTable,
 };

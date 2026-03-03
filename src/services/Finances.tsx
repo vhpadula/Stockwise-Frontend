@@ -1,21 +1,20 @@
-// services/finance.service.ts
-
+// services/Finances.ts
 import { api } from "@/lib/api";
 import {
   FinancialSummary,
   ProductFinancial,
   FinancialTimelineItem,
   TopProduct,
-  TimelinePeriod,
+  TimelineGroupBy,
 } from "@/types/Finances";
 
 const BASE_URL = "/api/financials/";
 
 export const FinancesService = {
-  // 🔹 Financial Overview
+  // Financial overview (note: API expects date_from / date_to)
   async getSummary(params?: {
-    start_date?: string;
-    end_date?: string;
+    date_from?: string;
+    date_to?: string;
   }): Promise<FinancialSummary> {
     const { data } = await api.get<FinancialSummary>(`${BASE_URL}summary/`, {
       params,
@@ -23,10 +22,11 @@ export const FinancesService = {
     return data;
   },
 
-  // 🔹 Financials per Product
+  // Financials per product
   async getProducts(params?: {
-    start_date?: string;
-    end_date?: string;
+    product?: string;
+    date_from?: string;
+    date_to?: string;
   }): Promise<ProductFinancial[]> {
     const { data } = await api.get<ProductFinancial[]>(`${BASE_URL}products/`, {
       params,
@@ -34,12 +34,12 @@ export const FinancesService = {
     return data;
   },
 
-  // 🔹 Timeline
+  // Timeline (note: API uses group_by instead of 'period')
   async getTimeline(params?: {
-    period?: TimelinePeriod;
+    group_by?: TimelineGroupBy;
     product?: string;
-    start_date?: string;
-    end_date?: string;
+    date_from?: string;
+    date_to?: string;
   }): Promise<FinancialTimelineItem[]> {
     const { data } = await api.get<FinancialTimelineItem[]>(
       `${BASE_URL}timeline/`,
@@ -48,11 +48,11 @@ export const FinancesService = {
     return data;
   },
 
-  // 🔹 Top Products
+  // Top products
   async getTopProducts(params?: {
     limit?: number;
-    start_date?: string;
-    end_date?: string;
+    date_from?: string;
+    date_to?: string;
   }): Promise<TopProduct[]> {
     const { data } = await api.get<TopProduct[]>(`${BASE_URL}top-products/`, {
       params,
