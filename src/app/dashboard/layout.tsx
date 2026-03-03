@@ -23,7 +23,7 @@ import {
   ShoppingCartIcon,
   UserIcon,
 } from "@heroicons/react/16/solid";
-import { PrimaryNavLink } from "@/components";
+import { PrimaryNavLink, SectionCard } from "@/components";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   const { token, loading, logout } = useAuth();
@@ -61,6 +61,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
 
   return (
     <AppShell
+      className="h-screen"
       padding="md"
       header={{ height: 60 }}
       navbar={{
@@ -162,8 +163,11 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
         </div>
       </AppShell.Navbar>
 
-      <AppShell.Main style={{ backgroundColor: "var(--primary-1)" }}>
-        {children}
+      <AppShell.Main
+        className="flex flex-col h-full"
+        style={{ backgroundColor: "var(--primary-1)" }}
+      >
+        <SectionCard>{children}</SectionCard>
       </AppShell.Main>
     </AppShell>
   );
