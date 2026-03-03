@@ -10,10 +10,11 @@ export interface FinancialSummary {
 export interface ProductFinancial {
   product_id: string;
   product_name: string;
-  revenue: string;
+  sales_revenue: string;
   cogs: string;
   profit: string;
-  profit_margin: string;
+  profit_margin_percent: string;
+  quantity_sold: string;
 }
 
 // 🔹 Timeline Data

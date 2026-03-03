@@ -1,13 +1,15 @@
 "use client";
 
-import { Table, ActionIcon, Group, Badge, Menu } from "@mantine/core";
+import { Table, ActionIcon, Text, Badge, Menu } from "@mantine/core";
 
 import Link from "next/link";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProductsService } from "@/services/Products";
 import { Product } from "@/types/Products";
+import { useRouter } from "next/navigation";
 import {
   EllipsisHorizontalIcon,
+  EyeIcon,
   PencilIcon,
   TrashIcon,
 } from "@heroicons/react/16/solid";
@@ -26,6 +28,8 @@ export default function ProductsTable({ products }: Props) {
     },
   });
 
+  const router = useRouter();
+
   return (
     <Table striped highlightOnHover>
       <Table.Thead>
@@ -41,7 +45,18 @@ export default function ProductsTable({ products }: Props) {
       <Table.Tbody>
         {products.map((product) => (
           <Table.Tr key={product.id}>
-            <Table.Td>{product.name}</Table.Td>
+            <Table.Td>
+              <Text
+                component="a"
+                c="purple"
+                onClick={() =>
+                  router.push(`/dashboard/products/${product.id}/detail`)
+                }
+                style={{ cursor: "pointer" }}
+              >
+                {product.name}
+              </Text>
+            </Table.Td>
             <Table.Td>{product.description}</Table.Td>
             <Table.Td>{product.sku}</Table.Td>
             <Table.Td>
@@ -57,6 +72,13 @@ export default function ProductsTable({ products }: Props) {
                 </Menu.Target>
 
                 <Menu.Dropdown>
+                  <Menu.Item
+                    leftSection={<EyeIcon className="w-4 h-4" />}
+                    component={Link}
+                    href={`/dashboard/products/${product.id}/detail`}
+                  >
+                    View Details
+                  </Menu.Item>
                   <Menu.Item
                     leftSection={<PencilIcon className="w-4 h-4" />}
                     component={Link}

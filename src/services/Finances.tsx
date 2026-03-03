@@ -11,7 +11,7 @@ import {
 
 const BASE_URL = "/api/financials/";
 
-export const financeService = {
+export const FinancesService = {
   // 🔹 Financial Overview
   async getSummary(params?: {
     start_date?: string;
