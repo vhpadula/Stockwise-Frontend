@@ -17,8 +17,19 @@ const processQueue = (error: unknown, token: string | null = null) => {
 export const api = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_URL });
 
 api.interceptors.request.use((config) => {
-  const access = localStorage.getItem("access");
-  if (access) config.headers.Authorization = `Bearer ${access}`;
+  // Endpoints that should NOT use the token
+  const noAuthEndpoints = [
+    "/users/token/", // login
+    "/api/users/register/", // register
+    "/users/token/refresh/", // refresh
+  ];
+  const url = config.url || "";
+  // Check if the request is for a no-auth endpoint
+  const isNoAuth = noAuthEndpoints.some((endpoint) => url.endsWith(endpoint));
+  if (!isNoAuth) {
+    const access = localStorage.getItem("access");
+    if (access) config.headers.Authorization = `Bearer ${access}`;
+  }
   return config;
 });
 

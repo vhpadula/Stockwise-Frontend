@@ -18,13 +18,8 @@ export const UsersService = {
     return res.data;
   },
 
-  async getCurrentUser(token: string) {
-    const res = await api.get("/api/users/me/", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
+  async getCurrentUser() {
+    const res = await api.get("/api/users/me/");
     return res.data as User;
   },
 };

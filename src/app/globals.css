@@ -3,6 +3,17 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Mantine primary color palette */
+  --primary-0: #f3e5f5;
+  --primary-1: #e1bee7;
+  --primary-2: #ce93d8;
+  --primary-3: #ba68c8;
+  --primary-4: #ab47bc;
+  --primary-5: #9c27b0;
+  --primary-6: #8e24aa;
+  --primary-7: #7b1fa2;
+  --primary-8: #6a1b9a;
+  --primary-9: #4a148c;
 }
 
 @theme inline {
