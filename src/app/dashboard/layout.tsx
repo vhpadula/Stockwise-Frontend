@@ -164,7 +164,7 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
       </AppShell.Navbar>
 
       <AppShell.Main
-        className="flex flex-col h-full"
+        className="flex flex-col h-full overflow-auto"
         style={{ backgroundColor: "var(--primary-1)" }}
       >
         <SectionCard>{children}</SectionCard>

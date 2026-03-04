@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Center, Loader } from "@mantine/core";
+import { Button, Center, Group, Loader, Title } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
@@ -83,9 +83,14 @@ export default function PurchasesPage() {
 
   return (
     <>
-      <Button mb="lg" onClick={() => router.push("/dashboard/purchases/new")}>
-        New Purchase Order
-      </Button>
+      <Group justify="space-between">
+        <Title order={2}>Purchase Orders</Title>
+
+        <Button mb="lg" onClick={() => router.push("/dashboard/purchases/new")}>
+          New Purchase Order
+        </Button>
+      </Group>
+
       <PurchasesTable
         orders={orders}
         onView={handleView}
