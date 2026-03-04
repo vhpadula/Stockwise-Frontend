@@ -1,36 +1,92 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Here is a **clean, concise `README.md` focused only on description + setup**, which is usually what recruiters expect for frontend repos.
 
-## Getting Started
+You can paste this directly into your repo.
 
-First, run the development server:
+# Stockwise Frontend
+
+Stockwise is a web interface for the **Stockwise inventory management system**, designed for **Food & Beverage CPG brands**.
+
+The application allows users to:
+
+- Manage products
+- Track inventory and stock batches
+- Create purchase orders to add stock
+- Record sales orders
+- Visualize financial insights such as revenue, cost, and profit
+
+The frontend communicates with the **Stockwise Backend API** to manage inventory operations and display analytics.
+
+Backend repository:  
+https://github.com/vhpadula/Stockwise-Backend
+
+---
+
+# Tech Stack
+
+- **Next.js**
+- **React**
+- **TypeScript**
+- **Mantine UI**
+- **TanStack Query (React Query)**
+- **Recharts**
+
+---
+
+# Setup
+
+## 1. Clone the repository
+
+```bash
+git clone https://github.com/vhpadula/Stockwise-Frontend
+cd Stockwise-Frontend
+```
+
+---
+
+## 2. Install dependencies
+
+```bash
+npm install
+```
+
+or
+
+```bash
+yarn install
+```
+
+---
+
+## 3. Configure environment variables
+
+Create a `.env.local` file in the project root:
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+This variable should point to the running Stockwise backend API.
+
+---
+
+## 4. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The application will be available at:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+# Backend Requirement
 
-To learn more about Next.js, take a look at the following resources:
+The frontend requires the Stockwise backend API to be running.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Follow the backend setup instructions here:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[https://github.com/vhpadula/Stockwise-Backend](https://github.com/vhpadula/Stockwise-Backend)
